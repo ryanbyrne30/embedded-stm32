@@ -1,0 +1,11 @@
+STM32-base
+STM32-base-STM32Cube
+gcc-arm*
+*.tar.bz2
+
+templates/STM32-base*
+
+tools/arm-none-eabi
+tools/bin
+tools/lib
+tools/share
