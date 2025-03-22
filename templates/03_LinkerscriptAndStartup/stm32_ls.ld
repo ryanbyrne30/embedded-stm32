@@ -13,8 +13,8 @@ _estack = ORIGIN(SRAM)+LENGTH(SRAM);
 
 /* Specifying the necessary heap and stack sizes */
 
-__max_heap_size = 0x200
-__max_stack_size = 0x400
+__max_heap_size = 0x200;
+__max_stack_size = 0x400;
 
 /* Defining output sections */
 SECTIONS

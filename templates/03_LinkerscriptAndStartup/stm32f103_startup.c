@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 // Declare external symbols from linker script
 extern uint32_t _estack; // top of statck
 extern uint32_t _etext;  // end of executable code section & beginning of data section stored in FLASH
