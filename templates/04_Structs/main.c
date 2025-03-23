@@ -10,7 +10,6 @@ typedef struct
     volatile uint32_t BSRR; /* offset: 0x10 */
     volatile uint32_t BRR;  /* offset: 0x14 */
     volatile uint32_t LCKR; /* offset: 0x18 */
-
 } GPIO_TypeDef;
 
 /* RCC structure */
@@ -32,10 +31,8 @@ typedef struct
 #define GPIOCEN (1U << 4)
 
 /* Bit mask for Pin 13 */
-#define PIN13 (1U << 13)
-
-/* Alias for Pin13 representing LED pin */
-#define LED_PIN PIN13
+#define BS13 0x20000000
+#define BR13 0x2000
 
 #define PAUSE_DURATION 500
 #define DOT_DURATION 500
@@ -47,18 +44,14 @@ void delay(int ms)
         ;
 }
 
-/*
-    Note: I'm not sure why setting the 13th pin to 0 seems to enable to LED
-    and setting to 1 seems to disable the LED with the ODR register.
-*/
 void ledOff()
 {
-    GPIOC->ODR |= LED_PIN;
+    GPIOC->BSRR = BR13;
 }
 
 void ledBlink(int duration)
 {
-    GPIOC->ODR &= ~LED_PIN;
+    GPIOC->BSRR = BS13;
     delay(duration);
     ledOff();
 }
@@ -96,15 +89,7 @@ int main(void)
         ledBlink(DOT_DURATION);
         delay(PAUSE_DURATION);
         ledBlink(DOT_DURATION);
-        delay(PAUSE_DURATION);
 
-        ledOff();
         delay(10000);
-
-        // GPIOC->ODR |= LED_PIN;
-
-        // GPIOC->ODR ^= LED_PIN;
-        // for (int i = 0; i < 100000; i++)
-        //     ;
     }
 }
