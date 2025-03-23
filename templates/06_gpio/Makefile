@@ -3,7 +3,7 @@ BIN=../../tools/bin/arm-none-eabi-objcopy
 CFLAGS=-c -mcpu=cortex-m3 -mthumb -std=gnu11
 LDFLAGS=-nostdlib -T stm32_ls.ld -Wl,-Map=blink.map
 STL=st-flash
-INC=-I./chip_headers/CMSIS/Include -I./chip_headers/CMSIS/Device/ST/STM32F1xx/Include
+INC=-I../../tools/chip_headers/CMSIS/Include -I../../tools/chip_headers/CMSIS/Device/ST/STM32F1xx/Include
 
 all : sos.bin
 
